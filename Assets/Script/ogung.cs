@@ -72,6 +72,15 @@ public class ogung : MonoBehaviour {
 					i--;
 					speed += 1;
 					break;
+				case 2:
+					// flip key
+					itemTypeList.RemoveAt (i);
+					itemStartTimeList.RemoveAt (i);
+					i--;
+					string temp = rightKey;
+					rightKey = leftKey;
+					leftKey = temp;
+					break;
 				case 4:
 					// size up
 					itemTypeList.RemoveAt (i);
@@ -184,6 +193,8 @@ public class ogung : MonoBehaviour {
 			}
 			break;
 		case 2:
+			itemStartTimeList.Add (now);
+			itemTypeList.Add (2);
 			string temp = rightKey;
 			rightKey = leftKey;
 			leftKey = temp;
