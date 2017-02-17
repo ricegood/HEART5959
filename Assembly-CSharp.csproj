@@ -45,7 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ogung.cs" />
+     <Compile Include="Assets\Script\Heart.cs" />
+     <Compile Include="Assets\Script\Manager_.cs" />
+     <Compile Include="Assets\Script\ogung.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
