@@ -9,6 +9,9 @@ public class ogung : MonoBehaviour {
 	public GameObject heart;
 	public SpriteRenderer kissFace;
 	public SpriteRenderer defaultFace;
+	public AudioSource jumpSound;
+	public AudioSource getSound;
+	public AudioSource scoreSound;
 
 	public Text scoreText;
 	public int speed;
@@ -32,6 +35,7 @@ public class ogung : MonoBehaviour {
 	private int score;
 
 	private bool noJump;
+	private bool jumpSoundBool;
 
 	// 0:speedUp, 1:slowDown, 2:flipKey, 3:noJump, 4:sizeUp, 5:sizeDown
 
@@ -112,8 +116,14 @@ public class ogung : MonoBehaviour {
 			trs.position += speed*movePos;
 		}
 
-		if(Input.GetKey(jumpKey) && !noJump){
-			trs.position += speed*jumpPos;
+		if (Input.GetKey (jumpKey) && !noJump) {
+			if (!jumpSoundBool) {
+				jumpSound.Play ();
+				jumpSoundBool = true;
+			}
+			trs.position += speed * jumpPos;
+		} else {
+			jumpSoundBool = false;
 		}
 
 		if (hasHeart) {
@@ -126,6 +136,7 @@ public class ogung : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.CompareTag (color + "Flag")) {
 			if (hasHeart) {
+				scoreSound.Play ();
 				getScore (coll);
 			}
 		}
@@ -144,6 +155,7 @@ public class ogung : MonoBehaviour {
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.CompareTag ("ogung")) {
 			if (Input.GetKeyDown (putKey)) {
+				getSound.Play ();
 				stealHeart(coll);
 			}
 		}
@@ -153,10 +165,12 @@ public class ogung : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Heart"))
 		{
+			getSound.Play ();
 			getHeart (other);
 		}
 		else if (other.gameObject.CompareTag("Item"))
 		{
+			getSound.Play ();
 			getItem (other);
 		}
 	}

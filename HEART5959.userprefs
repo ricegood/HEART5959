@@ -1,8 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ogung.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/StartScene.cs">
     <Files>
-      <File FileName="Assets/ogung.cs" Line="13" Column="49" />
+      <File FileName="Assets/Script/ogung.cs" Line="158" Column="22" />
+      <File FileName="Assets/Script/Heart.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/Manager_.cs" Line="1" Column="1" />
+      <File FileName="Assets/item.cs" Line="1" Column="1" />
+      <File FileName="Assets/StartScene.cs" Line="59" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

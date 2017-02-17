@@ -32,7 +32,7 @@ public class Manager_ : MonoBehaviour {
 	private void setType(){
 		randomNumber = (int)Random.Range (0, 100);
 
-		if (randomNumber <= 90) {
+		if (randomNumber <= 80) {
 			type = 0;
 		} else if (randomNumber <= 100) {
 			type = 1;
