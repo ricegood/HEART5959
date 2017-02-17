@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ogung : MonoBehaviour {
+	public const int ITEMTIME = 7;
+
 	public GameObject heart;
 	public SpriteRenderer kissFace;
 	public SpriteRenderer defaultFace;
@@ -21,15 +24,71 @@ public class ogung : MonoBehaviour {
 
 	private Vector3 movePos = new Vector3(0.03f , 0f , 0f);
 	private Vector3 jumpPos = new Vector3(0f , 0.05f , 0f);
-	private Vector3 scaleY = new Vector3(0f, 0.1f, 0f);
+
+	private Vector3 getBigger = new Vector3 (0.5f, 0.5f, 0f);
+	//private Vector3 getSmaller = new Vector3 (0.5f, 0.5f, 0f);
 
 	private bool hasHeart;
 	private int score;
+
+	private bool noJump;
+
+	// 0:speedUp, 1:slowDown, 2:flipKey, 3:noJump, 4:sizeUp, 5:sizeDown
+
+	private float now;
+	private List<float> itemStartTimeList = new List<float>();
+	private List<int> itemTypeList = new List<int> ();
+	private float noJumpStartTime;
 
 	// Use this for initialization
 	void Start () {
 		spr = GetComponent<SpriteRenderer> ();
 		trs = GetComponent<Transform> ();
+	}
+
+	void Update(){
+		now += Time.deltaTime;
+
+		// No Jump Time Out
+		if (noJump && (now - noJumpStartTime >= ITEMTIME)) {
+			noJump = false;
+		}
+
+		// Bigger, Smaller, Faster, Slower Item Time Out
+		for(int i=0; i<itemTypeList.Count; i++){
+			if (now - itemStartTimeList[i] >= ITEMTIME) {
+				switch (itemTypeList [i]) {
+				case 0:
+					// speed up
+					itemTypeList.RemoveAt (i);
+					itemStartTimeList.RemoveAt (i);
+					i--;
+					speed -= 1;
+					break;
+				case 1:
+					// speed down
+					itemTypeList.RemoveAt (i);
+					itemStartTimeList.RemoveAt (i);
+					i--;
+					speed += 1;
+					break;
+				case 4:
+					// size up
+					itemTypeList.RemoveAt (i);
+					itemStartTimeList.RemoveAt (i);
+					i--;
+					trs.localScale -= getBigger;
+					break;
+				case 5:
+					// size down
+					itemTypeList.RemoveAt (i);
+					itemStartTimeList.RemoveAt (i);
+					i--;
+					trs.localScale += getBigger;
+					break;
+				}
+			}
+		}
 	}
 
 	void FixedUpdate()
@@ -44,7 +103,7 @@ public class ogung : MonoBehaviour {
 			trs.position += speed*movePos;
 		}
 
-		if(Input.GetKey(jumpKey)){
+		if(Input.GetKey(jumpKey) && !noJump){
 			trs.position += speed*jumpPos;
 		}
 
@@ -76,7 +135,6 @@ public class ogung : MonoBehaviour {
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.CompareTag ("ogung")) {
 			if (Input.GetKeyDown (putKey)) {
-				Debug.Log ("zzz");
 				stealHeart(coll);
 			}
 		}
@@ -87,6 +145,10 @@ public class ogung : MonoBehaviour {
 		if (other.gameObject.CompareTag("Heart"))
 		{
 			getHeart (other);
+		}
+		else if (other.gameObject.CompareTag("Item"))
+		{
+			getItem (other);
 		}
 	}
 
@@ -101,6 +163,48 @@ public class ogung : MonoBehaviour {
 	private void getHeart(Collider2D other){
 		Destroy (other.gameObject);
 		hasHeart = true;
+	}
+
+	private void getItem(Collider2D other){
+		Destroy (other.gameObject);
+		int type = other.gameObject.GetComponent<item>().getType();
+		Debug.Log ("type : " + type);
+		// 0:speedUp, 1:slowDown, 2:flipKey, 3:noJump, 4:sizeUp
+		switch (type) {
+		case 0:
+			itemStartTimeList.Add (now);
+			itemTypeList.Add (0);
+			speed += 1;
+			break;
+		case 1:
+			if (speed > 0) {
+				itemStartTimeList.Add (now);
+				itemTypeList.Add (1);
+				speed -= 1;
+			}
+			break;
+		case 2:
+			string temp = rightKey;
+			rightKey = leftKey;
+			leftKey = temp;
+			break;
+		case 3:
+			noJump = true;
+			noJumpStartTime = now;
+			break;
+		case 4:
+			itemStartTimeList.Add (now);
+			itemTypeList.Add (4);
+			trs.localScale += getBigger;
+			break;
+		case 5:
+			if (trs.localScale.x >= 2 * getBigger.x) {
+				itemStartTimeList.Add (now);
+				itemTypeList.Add (5);
+				trs.localScale -= getBigger;
+			}
+			break;
+		}
 	}
 	
 	private void getScore(Collision2D coll){

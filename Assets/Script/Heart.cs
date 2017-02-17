@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Heart : MonoBehaviour {
 	private Transform trs;
+
 	// Use this for initialization
 	void Start () {
 		trs = GetComponent<Transform> ();
