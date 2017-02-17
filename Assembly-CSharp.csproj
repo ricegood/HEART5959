@@ -45,13 +45,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\InputName.cs" />
+     <Compile Include="Assets\Popup.cs" />
      <Compile Include="Assets\Script\Heart.cs" />
+     <Compile Include="Assets\Script\InputName.cs" />
      <Compile Include="Assets\Script\Manager_.cs" />
+     <Compile Include="Assets\Script\StartScene.cs" />
+     <Compile Include="Assets\Script\Util.cs" />
+     <Compile Include="Assets\Script\item.cs" />
      <Compile Include="Assets\Script\ogung.cs" />
-     <Compile Include="Assets\StartScene.cs" />
-     <Compile Include="Assets\Util.cs" />
-     <Compile Include="Assets\item.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

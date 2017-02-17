@@ -17,14 +17,14 @@ public class InputName : MonoBehaviour {
 		field.OnPointerClick(new PointerEventData(EventSystem.current));
 	}
 
-	public void SetPlayer1Name(string value)
+	public void SetPlayer1Name(Text t)
 	{
-		PlayerPrefs.SetString ("P1name", value);
+		PlayerPrefs.SetString ("P1name", t.text);
 	}
 
-	public void SetPlayer2Name(string value)
+	public void SetPlayer2Name(Text t)
 	{
-		PlayerPrefs.SetString ("P2name", value);
+		PlayerPrefs.SetString ("P2name", t.text);
 	}
 
 	public void SceneMove(){

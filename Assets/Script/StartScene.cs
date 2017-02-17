@@ -15,7 +15,7 @@ public class StartScene : MonoBehaviour {
 	private Vector3 arrowPos = new Vector3(0.9f, 1.15f, 0f);
 	private Vector3 arrowOffset = new Vector3 (0f, 0.6f, 0f);
 
-	private bool popup;
+	public static bool popup;
 
 	// Use this for initialization
 	void Start () {

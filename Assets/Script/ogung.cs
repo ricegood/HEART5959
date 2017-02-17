@@ -5,7 +5,11 @@ using System.Collections.Generic;
 
 public class ogung : MonoBehaviour {
 	public const int ITEMTIME = 7;
+	public static bool gameOver;
+	public static int winPlayer;
 
+	public int playerNumber;
+	public GameObject gameOverPanel;
 	public GameObject heart;
 	public SpriteRenderer kissFace;
 	public SpriteRenderer defaultFace;
@@ -46,12 +50,39 @@ public class ogung : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log ("Play Scene Start, Initialize!");
+		gameOver = false;
+		hasHeart = false;
+		score = 0;
+		noJump = false;
+		jumpSoundBool = false;
+		now = 0;
+		itemStartTimeList.Clear ();
+		itemTypeList.Clear ();
+		noJumpStartTime = 0;
 		spr = GetComponent<SpriteRenderer> ();
 		trs = GetComponent<Transform> ();
 	}
 
 	void Update(){
 		now += Time.deltaTime;
+		if (gameOver) {
+			this.enabled = false;
+			gameOverPanel.SetActive (true);
+		}
+		// Game Over Check
+		if (trs.position.y < -3.0f) {
+			//Debug.Log ("LOSE");
+			if (playerNumber == 1)
+				winPlayer = 2;
+			else
+				winPlayer = 1;
+			gameOver = true;
+		} else if (score >= 30) {
+			//Debug.Log ("WIN");
+			winPlayer = playerNumber;
+			gameOver = true;
+		}
 
 		// No Jump Time Out
 		if (noJump && (now - noJumpStartTime >= ITEMTIME)) {
