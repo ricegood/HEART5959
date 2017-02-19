@@ -4,6 +4,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class Popup : MonoBehaviour {
+	public int type;	// 0: Result Popup,   1: Quit Popup
+
 	public Text resultText;
 	public GameObject[] buttonOverImage;
 	private string winner;
@@ -12,17 +14,23 @@ public class Popup : MonoBehaviour {
 	public AudioSource moveSound;
 	public AudioSource clickSound;
 
+	public ogung[] ogungs;
+
 	private int choose;
 
 	// Use this for initialization
 	void Start () {
-		deActivateMenu (choose);
-		choose = 0;
-		activateMenu (choose);
+			deActivateMenu (choose);
+			choose = 0;
+			activateMenu (choose);
 
-		winner = PlayerPrefs.GetString ("P" + ogung.winPlayer.ToString () + "name");
-		Debug.Log ("Win Player : " + winner);
-		resultText.text = "♥ " + winner + " WIN ♥";
+		if (type == 0) {
+			winner = PlayerPrefs.GetString ("P" + ogung.winPlayer.ToString () + "name");
+			Debug.Log ("Win Player : " + winner);
+			resultText.text = "♥ " + winner + " WIN ♥";
+		} else if (type == 1) {
+			
+		}
 	}
 	
 	// Update is called once per frame
@@ -36,7 +44,7 @@ public class Popup : MonoBehaviour {
 				choose = 0;
 
 			activateMenu (choose);
-		} else if (Input.GetKeyDown ("c")) {
+		} else if (Input.GetKeyDown ("return")) {
 			clickSound.Play ();
 			switch (choose) {
 			case 0:
@@ -46,7 +54,16 @@ public class Popup : MonoBehaviour {
 				break;
 			case 1:
 				// retry
-				moveScene ("Play");
+				if (type == 0) {
+					moveScene ("Play");
+				} else if (type == 1) {
+					ogungs [0].enabled = true;
+					ogungs [1].enabled = true;
+					this.gameObject.SetActive (false);
+					deActivateMenu (choose);
+					choose = 0;
+					activateMenu (choose);
+				}
 				break;
 			}
 		}

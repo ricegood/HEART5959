@@ -44,7 +44,7 @@ public class StartScene : MonoBehaviour {
 					choose++;
 
 				activateMenu (choose);
-			} else if (Input.GetKeyDown ("c")) {
+			} else if (Input.GetKeyDown ("return")) {
 				clickSound.Play ();
 				switch (choose) {
 				case 0:
