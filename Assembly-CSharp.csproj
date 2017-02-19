@@ -45,12 +45,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Quit.cs" />
-     <Compile Include="Assets\Record.cs" />
      <Compile Include="Assets\Script\Heart.cs" />
      <Compile Include="Assets\Script\InputName.cs" />
+     <Compile Include="Assets\Script\KeySetting.cs" />
      <Compile Include="Assets\Script\Manager_.cs" />
      <Compile Include="Assets\Script\Popup.cs" />
+     <Compile Include="Assets\Script\Quit.cs" />
+     <Compile Include="Assets\Script\Record.cs" />
+     <Compile Include="Assets\Script\SettingPopup.cs" />
      <Compile Include="Assets\Script\StartScene.cs" />
      <Compile Include="Assets\Script\Util.cs" />
      <Compile Include="Assets\Script\item.cs" />

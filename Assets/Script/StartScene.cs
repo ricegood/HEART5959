@@ -19,6 +19,7 @@ public class StartScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		loadKey ();
 		popup = false;
 		choose = 0;
 		activateMenu (choose);
@@ -57,8 +58,8 @@ public class StartScene : MonoBehaviour {
 					menuPanelList [1].SetActive (true);
 					break;
 				case 2:
-					//popup = true;
-					//menuPanelList [2].SetActive (true);
+					popup = true;
+					menuPanelList [2].SetActive (true);
 					break;
 				case 3:
 					Application.Quit ();
@@ -78,5 +79,32 @@ public class StartScene : MonoBehaviour {
 	private void deActivateMenu (int n){
 		menuList [n].SetActive (true);
 		menuOverList [n].SetActive (false);
+	}
+
+	private void loadKey(){
+		if (!PlayerPrefs.HasKey ("1LeftKey")) {
+			PlayerPrefs.SetString ("1LeftKey", "c");
+		}
+		if (!PlayerPrefs.HasKey ("1RightKey")) {
+			PlayerPrefs.SetString ("1RightKey", "b");
+		}
+		if (!PlayerPrefs.HasKey ("1JumpKey")) {
+			PlayerPrefs.SetString ("1JumpKey", "x");
+		}
+		if (!PlayerPrefs.HasKey ("1StealKey")) {
+			PlayerPrefs.SetString ("1StealKey", "z");
+		}
+		if (!PlayerPrefs.HasKey ("2LeftKey")) {
+			PlayerPrefs.SetString ("2LeftKey", "left");
+		}
+		if (!PlayerPrefs.HasKey ("2RightKey")) {
+			PlayerPrefs.SetString ("2RightKey", "right");
+		}
+		if (!PlayerPrefs.HasKey ("2JumpKey")) {
+			PlayerPrefs.SetString ("2JumpKey", "l");
+		}
+		if (!PlayerPrefs.HasKey ("2StealKey")) {
+			PlayerPrefs.SetString ("2StealKey", "k");
+		}
 	}
 }

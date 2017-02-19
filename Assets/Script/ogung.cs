@@ -21,10 +21,10 @@ public class ogung : MonoBehaviour {
 	public int speed;
 	public string color;
 
-	public string rightKey;
-	public string leftKey;
-	public string jumpKey;
-	public string putKey;
+	private string rightKey;
+	private string leftKey;
+	private string jumpKey;
+	private string putKey;
 
 	private SpriteRenderer spr;
 	private Transform trs;
@@ -41,6 +41,8 @@ public class ogung : MonoBehaviour {
 	private bool noJump;
 	private bool jumpSoundBool;
 
+	private static int numOfRecord;
+
 	// 0:speedUp, 1:slowDown, 2:flipKey, 3:noJump, 4:sizeUp, 5:sizeDown
 
 	private float now;
@@ -50,6 +52,7 @@ public class ogung : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		numOfRecord = PlayerPrefs.GetInt ("numOfRecord") + 1;
 		gameOver = false;
 		hasHeart = false;
 		score = 0;
@@ -61,6 +64,9 @@ public class ogung : MonoBehaviour {
 		noJumpStartTime = 0;
 		spr = GetComponent<SpriteRenderer> ();
 		trs = GetComponent<Transform> ();
+
+		Debug.Log (playerNumber);
+		loadKey ();
 	}
 
 	void Update(){
@@ -68,14 +74,16 @@ public class ogung : MonoBehaviour {
 		if (gameOver) {
 			this.enabled = false;
 			gameOverPanel.SetActive (true);
+			saveRecord ();
 		}
 		// Game Over Check
 		if (trs.position.y < -3.0f) {
 			//Debug.Log ("LOSE");
-			if (playerNumber == 1)
+			if (playerNumber == 1) {
 				winPlayer = 2;
-			else
+			} else {
 				winPlayer = 1;
+			}
 			gameOver = true;
 		} else if (score >= 30) {
 			//Debug.Log ("WIN");
@@ -277,5 +285,20 @@ public class ogung : MonoBehaviour {
 
 	private void changeFace(SpriteRenderer s){
 		spr.sprite = s.sprite;
+	}
+
+	private void saveRecord(){
+		PlayerPrefs.SetInt ("numOfRecord", numOfRecord);
+		PlayerPrefs.SetString (numOfRecord + "P"+playerNumber+"name", PlayerPrefs.GetString ("P"+playerNumber+"name"));
+		PlayerPrefs.SetInt (numOfRecord + "P"+playerNumber+"score", score);
+		PlayerPrefs.SetInt (numOfRecord + "winner", winPlayer);
+		PlayerPrefs.SetString (numOfRecord + "date", string.Format("{0:yyyy/MM/dd}", System.DateTime.Now));
+	}
+
+	private void loadKey(){
+		leftKey = PlayerPrefs.GetString(playerNumber.ToString() + "LeftKey");
+		rightKey = PlayerPrefs.GetString(playerNumber.ToString() + "RightKey");
+		jumpKey = PlayerPrefs.GetString(playerNumber.ToString() + "JumpKey");
+		putKey = PlayerPrefs.GetString(playerNumber.ToString() + "StealKey");
 	}
 }

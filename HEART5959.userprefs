@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Record.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SettingPopup.cs">
     <Files>
-      <File FileName="Assets/Script/InputName.cs" Line="18" Column="3" />
-      <File FileName="Assets/Script/StartScene.cs" Line="54" Column="12" />
-      <File FileName="Assets/Quit.cs" Line="19" Column="3" />
-      <File FileName="Assets/Script/Util.cs" Line="3" Column="1" />
-      <File FileName="Assets/Script/ogung.cs" Line="52" Column="17" />
-      <File FileName="Assets/Record.cs" Line="33" Column="2" />
+      <File FileName="Assets/Script/Popup.cs" Line="48" Column="11" />
+      <File FileName="Assets/Script/ogung.cs" Line="300" Column="74" />
+      <File FileName="Assets/Script/InputName.cs" Line="22" Column="44" />
+      <File FileName="Assets/Script/StartScene.cs" Line="108" Column="4" />
+      <File FileName="Assets/Quit.cs" Line="24" Column="10" />
+      <File FileName="Assets/SettingPopup.cs" Line="36" Column="26" />
+      <File FileName="Assets/KeySetting.cs" Line="69" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
