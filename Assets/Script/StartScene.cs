@@ -19,6 +19,7 @@ public class StartScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		popup = false;
 		choose = 0;
 		activateMenu (choose);
 	}
@@ -52,8 +53,8 @@ public class StartScene : MonoBehaviour {
 					menuPanelList [0].SetActive (true);
 					break;
 				case 1:
-					//popup = true;
-					//menuPanelList [1].SetActive (true);
+					popup = true;
+					menuPanelList [1].SetActive (true);
 					break;
 				case 2:
 					//popup = true;

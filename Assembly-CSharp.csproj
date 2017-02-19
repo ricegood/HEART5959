@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Quit.cs" />
+     <Compile Include="Assets\Record.cs" />
      <Compile Include="Assets\Script\Heart.cs" />
      <Compile Include="Assets\Script\InputName.cs" />
      <Compile Include="Assets\Script\Manager_.cs" />

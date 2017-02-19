@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Quit : MonoBehaviour {
 	public GameObject UI_Quit;
@@ -13,7 +14,7 @@ public class Quit : MonoBehaviour {
 		{
 			ogungs [0].enabled = false;
 			ogungs [1].enabled = false;
-			UI_Quit.SetActive(true);
+			UI_Quit.SetActive (true);
 		}
 	}
 }

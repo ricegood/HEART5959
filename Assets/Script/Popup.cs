@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class Popup : MonoBehaviour {
-	public int type;	// 0: Result Popup,   1: Quit Popup
+	public int type;	// 0: Result Popup,   1: Quit Popup(Play Scene)
 
 	public Text resultText;
 	public GameObject[] buttonOverImage;
@@ -28,8 +28,6 @@ public class Popup : MonoBehaviour {
 			winner = PlayerPrefs.GetString ("P" + ogung.winPlayer.ToString () + "name");
 			Debug.Log ("Win Player : " + winner);
 			resultText.text = "♥ " + winner + " WIN ♥";
-		} else if (type == 1) {
-			
 		}
 	}
 	

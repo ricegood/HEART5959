@@ -50,7 +50,6 @@ public class ogung : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Play Scene Start, Initialize!");
 		gameOver = false;
 		hasHeart = false;
 		score = 0;
