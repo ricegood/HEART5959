@@ -27,7 +27,7 @@ public class Record : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown ("escape")) {
+		if (Input.GetKeyDown ("escape") || Input.GetKeyDown ("return")) {
 			buttonSound.Play ();
 			StartScene.popup = false;
 			this.gameObject.SetActive (false);

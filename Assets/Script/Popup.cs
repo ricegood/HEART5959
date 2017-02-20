@@ -26,7 +26,6 @@ public class Popup : MonoBehaviour {
 
 		if (type == 0) {
 			winner = PlayerPrefs.GetString ("P" + ogung.winPlayer.ToString () + "name");
-			Debug.Log ("Win Player : " + winner);
 			resultText.text = "♥ " + winner + " WIN ♥";
 		}
 	}

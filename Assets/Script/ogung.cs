@@ -64,8 +64,6 @@ public class ogung : MonoBehaviour {
 		noJumpStartTime = 0;
 		spr = GetComponent<SpriteRenderer> ();
 		trs = GetComponent<Transform> ();
-
-		Debug.Log (playerNumber);
 		loadKey ();
 	}
 
