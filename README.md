@@ -1,4 +1,4 @@
-# :heart:hearts-yum-yum:heart: ![issue_badge](https://img.shields.io/badge/download-%F0%9F%92%96-lightgrey.svg)
+# :heart:hearts-yum-yum:heart: [![issue_badge](https://img.shields.io/badge/download-%F0%9F%92%96-lightgrey.svg)](https://9yang.itch.io/hearts-yum-yum)
 
 ### :couple_with_heart:The cutest competition game for 2 players
 > ![](fig/1.png)
