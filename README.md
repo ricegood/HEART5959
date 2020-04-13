@@ -1,4 +1,4 @@
-# :heart:hearts-yum-yum:heart: [![Github Downloads (total)](https://img.shields.io/github/downloads/kotlin-graphics/kotlin-unsigned/total.svg)](https://9yang.itch.io/hearts-yum-yum)
+# :heart:hearts-yum-yum:heart: ![issue_badge](https://img.shields.io/badge/download-%F0%9F%92%96-lightgrey.svg)
 
 ### :couple_with_heart:The cutest competition game for 2 players
 > ![](fig/1.png)
